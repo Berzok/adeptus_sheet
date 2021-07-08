@@ -1,7 +1,9 @@
 <template>
     <div>
-        <h1>{{ message }}</h1>
-        <router-link to="/accueil">Accueil</router-link>
+        <div class="mx-auto">
+            <h1>{{ message }}</h1>
+
+        </div>
     </div>
 </template>
 

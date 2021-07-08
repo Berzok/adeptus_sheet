@@ -1,7 +1,10 @@
 <template>
     <div>
-        <h1>{{ message }}</h1>
-        <router-link to="/overview">Synthèse</router-link>
+        <div class="mx-auto">
+            <h1>{{ message }}</h1>
+            <router-link to="/login">Connexion</router-link>
+            <router-link to="/overview">Synthèse</router-link>
+        </div>
     </div>
 </template>
 
