@@ -1,13 +1,13 @@
 <template>
     <div id="sidemenu">
-        <ul class="nav nav-tabs flex-column w-100">
-            <li class="nav-item mb-2 w-100">
+        <ul class="nav nav-tabs flex-column align-self-start w-100 mt-5">
+            <li class="nav-item my-3">
                 <router-link to="/accueil" active-class="active" class="nav-link">Accueil</router-link>
             </li>
-            <li class="nav-item mb-2">
+            <li class="nav-item my-3">
                 <router-link to="/login" active-class="active" class="nav-link">Connexion</router-link>
             </li>
-            <li class="nav-item mb-2">
+            <li class="nav-item my-3">
                 <router-link to="/overview" active-class="active" class="nav-link">Synthèse</router-link>
             </li>
         </ul>

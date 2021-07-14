@@ -1,7 +1,7 @@
 <template>
     <div class="d-flex min-vh-100">
         <Sidemenu class="navbar bg-primary"></Sidemenu>
-        <router-view class="container-fluid d-flex flex-grow-1 border border-2 border-secondary"></router-view>
+        <router-view class="container-fluid d-flex flex-grow-1 border border-2 border-secondary pt-5"></router-view>
     </div>
 </template>
 
