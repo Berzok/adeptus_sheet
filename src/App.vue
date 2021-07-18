@@ -1,7 +1,7 @@
 <template>
     <div class="d-flex min-vh-100">
         <Sidemenu class="navbar bg-primary"></Sidemenu>
-        <router-view class="container-fluid d-flex flex-grow-1 border border-2 border-secondary pt-5"></router-view>
+        <router-view class="flex-grow-1 border border-2 border-secondary"></router-view>
     </div>
 </template>
 
@@ -30,6 +30,5 @@ export default {
 </script>
 
 <style>
-@import '~bootstrap/dist/css/bootstrap.min.css';
-@import '~bootswatch/dist/vapor/bootstrap.min.css';
+@import '~bootswatch/dist/darkly/bootstrap.min.css';
 </style>
