@@ -6,16 +6,24 @@
             <PersonnageDetails></PersonnageDetails>
 
 
-            <template v-for="i in 4" :key="i">
-                <CardNumber v-bind="caracteristiques[i]"></CardNumber>
-            </template>
+            <div class="d-flex justify-content-evenly">
+                <template v-for="c in caracteristiques" :key="c">
+                    <CardNumber v-bind="c"></CardNumber>
+                </template>
+            </div>
+
 
         </div>
 
 
         <div class="d-flex">
-            <table>
+            <table class="table table-bordered">
+                <thead>Hello</thead>
                 <tr>
+                    <td>Cellule</td>
+                    <td>Cellule</td>
+                    <td>Cellule</td>
+                    <td>Cellule</td>
                     <td>Cellule</td>
                 </tr>
             </table>
@@ -37,57 +45,68 @@ export default {
                 {
                     nom: 'Physique',
                     current: 45,
-                    max: 45
+                    max: 45,
+                    order: 1,
                 },
                 {
                     nom: 'Intelligence',
                     current: 33,
-                    max: 33
+                    max: 33,
+                    order: 1,
                 },
                 {
                     nom: 'Empathie',
                     current: 21,
-                    max: 21
+                    max: 21,
+                    order: 1,
                 },
                 {
                     nom: 'Synchronisation',
                     current: 40,
-                    max: 40
+                    max: 40,
+                    order: 1,
                 },
                 {
                     nom: 'Stress',
                     current: 0,
-                    max: 33
+                    max: 33,
+                    order: -1
                 },
                 {
                     nom: 'Ego',
                     current: 0,
-                    max: 21
+                    max: 21,
+                    order: -1
                 },
                 {
                     nom: 'Fatigue',
                     current: 0,
-                    max: 5
+                    max: 5,
+                    order: -1
                 },
                 {
                     nom: 'Blessures',
                     current: 0,
-                    max: 5
+                    max: 5,
+                    order: -1
                 },
                 {
                     nom: "Seuil d'effort",
                     current: 0,
-                    max: 33
+                    max: 33,
+                    order: -1
                 },
                 {
                     nom: 'Fortune',
                     current: 0,
-                    max: 10
+                    max: 10,
+                    order: 1
                 },
                 {
                     nom: 'Fatalité',
                     current: 0,
-                    max: 15
+                    max: '??',
+                    order: -1
                 },
             ]
         }

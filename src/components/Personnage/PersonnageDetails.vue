@@ -1,17 +1,37 @@
 <template>
-    <div class="card mb-3">
+    <div class="card mb-3 mw-75">
+        <h4 class="card-header">Détails du personnage</h4>
         <div class="d-flex g-0">
             <div class="">
                 <img src="@/assets/logo.png" class="img-fluid rounded-start" alt="...">
             </div>
-            <div class="">
-                <div class="card-body">
-                    <p class="card-text">
-                        This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.
-                    </p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <div class="card-body d-flex flex-column align-content-center">
+                <div class="row">
+                    <label for="nomPersonnage" class="col-lg-1 control-label col-form-label">Nom: </label>
+                    <div class="col">
+                        <input id="nomPersonnage" class="form-control">
+                    </div>
                 </div>
+
+                <div class="row">
+                    <label for="prenomPersonnage" class="col-lg-1 col-form-label">Prénom: </label>
+                    <div class="col">
+                        <input id="prenomPersonnage" class="form-control">
+                    </div>
+                </div>
+
+                <hr/>
+
+                <div class="row">
+                    <label for="originePersonnage" class="col-lg-1 col-form-label">Origine: </label>
+                    <div class="col">
+                        <select id="originePersonnage" class="form-select"></select>
+                    </div>
+                </div>
+
+                <hr />
+
+
             </div>
         </div>
     </div>

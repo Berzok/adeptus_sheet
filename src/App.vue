@@ -9,6 +9,9 @@
 import {h} from 'vue';
 import Sidemenu from './components/Sidemenu';
 
+
+//Could be useful:
+// https://marozed.com/vue-cheatsheet/
 export default {
     name: 'App',
     components: {

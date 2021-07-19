@@ -1,11 +1,13 @@
 <template>
 
-    <div class="card mb-4">
+    <div class="card mb-4 text-center">
+        <h5 class="card-header border-bottom">{{ nom }}</h5>
         <div class="card-body">
-            <h5 class="card-title">{{ nom }}</h5>
-            <p class="card-text">
-                {{ current }} / {{ max }}
-            </p>
+            <h3 class="card-text">
+                <span :class="(current*order) < (max*order) ? 'text-warning' : 'text-success'">{{ current }}</span>
+                /
+                <span class="text-success">{{ max }}</span>
+            </h3>
         </div>
     </div>
 
@@ -18,9 +20,11 @@ export default {
     props: {
         nom: String,
         current: Number,
-        max: Number
+        max: [Number, String],
+        order: Number
     }
 }
+
 </script>
 
 <style scoped>
