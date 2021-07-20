@@ -16,7 +16,7 @@
 
 <script lang="ts">
 export default {
-    name: 'PersonnageDetails',
+    name: 'CardNumber',
     props: {
         nom: String,
         current: Number,

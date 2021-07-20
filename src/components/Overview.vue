@@ -1,15 +1,37 @@
 <template>
     <div class="container-fluid wrapper pt-2">
 
-        <div class="d-flex flex-column">
+        <div class="d-flex">
 
             <PersonnageDetails></PersonnageDetails>
 
 
-            <div class="d-flex justify-content-evenly">
-                <template v-for="c in caracteristiques" :key="c">
-                    <CardNumber v-bind="c"></CardNumber>
-                </template>
+            <div class="d-flex flex-column flex-grow-1 align-items-stretch">
+
+                <div class="d-flex flex-wrap justify-content-evenly">
+                    <template v-for="c in caracteristiques.slice(0, 4)" :key="c">
+                        <CardNumber v-bind="c"></CardNumber>
+                    </template>
+                </div>
+
+                <!-- Fatigue, Blessures, Seuil d'effort -->
+                <div class="d-flex flex-wrap justify-content-evenly">
+                    <template v-for="c in caracteristiques.slice(4, 7)" :key="c">
+                        <CardNumber v-bind="c"></CardNumber>
+                    </template>
+                </div>
+
+                <div class="d-flex flex-wrap justify-content-evenly">
+                    <template v-for="c in caracteristiques.slice(7, 9)" :key="c">
+                        <CardNumber v-bind="c"></CardNumber>
+                    </template>
+                </div>
+
+                <div class="d-flex flex-wrap justify-content-center">
+                    <template v-for="c in caracteristiques.slice(9, 11)" :key="c">
+                        <CardNumber v-bind="c"></CardNumber>
+                    </template>
+                </div>
             </div>
 
 
@@ -67,18 +89,6 @@ export default {
                     order: 1,
                 },
                 {
-                    nom: 'Stress',
-                    current: 0,
-                    max: 33,
-                    order: -1
-                },
-                {
-                    nom: 'Ego',
-                    current: 0,
-                    max: 21,
-                    order: -1
-                },
-                {
                     nom: 'Fatigue',
                     current: 0,
                     max: 5,
@@ -94,6 +104,18 @@ export default {
                     nom: "Seuil d'effort",
                     current: 0,
                     max: 33,
+                    order: -1
+                },
+                {
+                    nom: 'Stress',
+                    current: 0,
+                    max: 33,
+                    order: -1
+                },
+                {
+                    nom: 'Ego',
+                    current: 0,
+                    max: 21,
                     order: -1
                 },
                 {
