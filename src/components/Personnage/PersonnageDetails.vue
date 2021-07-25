@@ -1,23 +1,23 @@
 <template>
 
-    <div class="card mb-3" style="width: 60%">
+    <div class="card mb-3" style="width: 40%">
         <h4 class="card-header">Détails du personnage</h4>
         <div class="d-flex align-items-stretch g-0">
 
-            <img src="@/assets/logo.png" class="img-fluid rounded-start flex-fill h-100" alt="...">
+            <div id="imagePersonnage" class="img-fluid rounded border border-white flex-fill flex-grow-1"></div>
 
-            <div class="card-body d-flex flex-column flex-wrap">
+            <div class="p-3 d-flex flex-column justify-content-end">
 
                 <div class="row">
                     <label for="nomPersonnage" class="col col-form-label">Nom: </label>
-                    <div class="col-auto flex-fill">
+                    <div class="col-auto">
                         <input id="nomPersonnage" class="form-control">
                     </div>
                 </div>
 
                 <div class="row">
                     <label for="prenomPersonnage" class="col col-form-label">Prénom: </label>
-                    <div class="col-auto flex-fill">
+                    <div class="col-auto">
                         <input id="prenomPersonnage" class="form-control">
                     </div>
                 </div>
@@ -34,21 +34,21 @@
 
                 <div class="row">
                     <label for="agePersonnage" class="col col-form-label">Âge: </label>
-                    <div class="col-auto flex-fill">
+                    <div class="col-auto">
                         <input id="agePersonnage" class="form-control" type="number">
                     </div>
                 </div>
 
                 <div class="row">
                     <label for="taillePersonnage" class="col col-form-label">Taille: </label>
-                    <div class="col-auto flex-fill">
+                    <div class="col-auto">
                         <input id="taillePersonnage" class="form-control" type="number">
                     </div>
                 </div>
 
                 <div class="row">
                     <label for="massePersonnage" class="col col-form-label">Masse: </label>
-                    <div class="col-auto flex-fill">
+                    <div class="col-auto">
                         <input id="massePersonnage" class="form-control" type="number">
                     </div>
                 </div>
@@ -57,14 +57,14 @@
 
                 <div class="row">
                     <label for="nationPersonnage" class="col col-form-label">Nationalité: </label>
-                    <div class="col-auto flex-fill">
+                    <div class="col-auto">
                         <input id="nationPersonnage" class="form-control" type="text">
                     </div>
                 </div>
 
                 <div class="row">
                     <label for="ethniePersonnage" class="col col-form-label">Ethnicité: </label>
-                    <div class="col-auto flex-fill">
+                    <div class="col-auto">
                         <input id="ethniePersonnage" class="form-control" type="text">
                     </div>
                 </div>
@@ -139,5 +139,8 @@ export default {
 </script>
 
 <style scoped>
-
+#imagePersonnage{
+    background-image: url('~@/assets/asuka.jpg');
+    background-size: cover;
+}
 </style>

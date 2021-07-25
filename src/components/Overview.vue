@@ -5,50 +5,37 @@
 
             <PersonnageDetails></PersonnageDetails>
 
+            <span class="mx-2"></span>
 
-            <div class="d-flex flex-column flex-grow-1 align-items-stretch">
+            <div class="d-flex flex-column flex-grow-1">
 
-                <div class="d-flex flex-wrap justify-content-evenly">
-                    <template v-for="c in caracteristiques.slice(0, 4)" :key="c">
-                        <CardNumber v-bind="c"></CardNumber>
-                    </template>
+                <div class="d-flex flex-column flex-grow-1 justify-content-evenly">
+
+                    <div class="d-flex justify-content-around">
+                        <template v-for="c in caracteristiques.slice(0, 6)" :key="c">
+                            <CardNumber v-bind="c"></CardNumber>
+                        </template>
+
+
+                    </div>
+
+                    <!-- Fatigue, Blessures, Seuil d'effort -->
+                    <div class="d-flex justify-content-around">
+                        <template v-for="c in caracteristiques.slice(6, 11)" :key="c">
+                            <CardNumber v-bind="c"></CardNumber>
+                        </template>
+                    </div>
+
                 </div>
 
-                <!-- Fatigue, Blessures, Seuil d'effort -->
-                <div class="d-flex flex-wrap justify-content-evenly">
-                    <template v-for="c in caracteristiques.slice(4, 7)" :key="c">
-                        <CardNumber v-bind="c"></CardNumber>
-                    </template>
-                </div>
+                <div class="d-flex">
 
-                <div class="d-flex flex-wrap justify-content-evenly">
-                    <template v-for="c in caracteristiques.slice(7, 9)" :key="c">
-                        <CardNumber v-bind="c"></CardNumber>
-                    </template>
-                </div>
+                    <Tableau></Tableau>
 
-                <div class="d-flex flex-wrap justify-content-center">
-                    <template v-for="c in caracteristiques.slice(9, 11)" :key="c">
-                        <CardNumber v-bind="c"></CardNumber>
-                    </template>
                 </div>
             </div>
 
 
-        </div>
-
-
-        <div class="d-flex">
-            <table class="table table-bordered">
-                <thead>Hello</thead>
-                <tr>
-                    <td>Cellule</td>
-                    <td>Cellule</td>
-                    <td>Cellule</td>
-                    <td>Cellule</td>
-                    <td>Cellule</td>
-                </tr>
-            </table>
         </div>
 
     </div>
@@ -58,9 +45,13 @@
 <script lang="ts">
 import PersonnageDetails from './Personnage/PersonnageDetails.vue';
 import CardNumber from './CardNumber.vue';
+import Tableau from './Tableau.vue';
 
 export default {
     name: "Overview",
+    mounted() {
+
+    },
     data() {
         return {
             caracteristiques: [
@@ -87,6 +78,18 @@ export default {
                     current: 40,
                     max: 40,
                     order: 1,
+                },
+                {
+                    nom: 'Fortune',
+                    current: 0,
+                    max: 10,
+                    order: 1
+                },
+                {
+                    nom: 'Fatalité',
+                    current: 0,
+                    max: '??',
+                    order: -1
                 },
                 {
                     nom: 'Fatigue',
@@ -117,25 +120,14 @@ export default {
                     current: 0,
                     max: 21,
                     order: -1
-                },
-                {
-                    nom: 'Fortune',
-                    current: 0,
-                    max: 10,
-                    order: 1
-                },
-                {
-                    nom: 'Fatalité',
-                    current: 0,
-                    max: '??',
-                    order: -1
-                },
+                }
             ]
         }
     },
     components: {
         'CardNumber': CardNumber,
-        'PersonnageDetails': PersonnageDetails
+        'PersonnageDetails': PersonnageDetails,
+        'Tableau': Tableau
     }
 }
 //<CardNumber v-for="caracteristique in caracteristiques" :key="caracteristique.nom" :title="caracteristique.nom"></CardNumber>

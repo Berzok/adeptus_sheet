@@ -1,6 +1,7 @@
 import {createApp, h, nextTick} from 'vue';
 import App from './App.vue';
 import router from './router';
+import $ from 'jquery';
 
 const Vue = {
     createApp: createApp,
