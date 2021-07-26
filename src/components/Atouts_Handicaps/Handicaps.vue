@@ -30,7 +30,7 @@
 
                 <div class="d-flex">
 
-                    <Tableau :config="tableau.config" :data="tableau.data"></Tableau>
+                    <Tableau></Tableau>
 
                 </div>
             </div>
@@ -121,95 +121,7 @@ export default {
                     max: 21,
                     order: -1
                 }
-            ],
-            tableau: {
-                config: {
-                    headers: [
-                        {
-                            nom: 'Groupe',
-                            label: 'Groupe',
-                            class: '',
-                        },
-                        {
-                            nom: 'Caractéristique',
-                            label: 'Carac.',
-                            class: '',
-                        },
-                        {
-                            nom: 'Bonus',
-                            label: 'Bonus',
-                            class: '',
-                        },
-                        {
-                            nom: 'Total',
-                            label: 'Total',
-                            class: '',
-                        }
-                    ]
-                },
-                data: [
-                    {
-                        nom: 'Arts',
-                        cara: 'Emp',
-                        bonus: null,
-                        total: 12
-                    },
-                    {
-                        nom: 'Connaissances',
-                        cara: 'Int',
-                        bonus: null,
-                        total: 12
-                    },
-                    {
-                        nom: 'Éloquence',
-                        cara: 'Emp',
-                        bonus: null,
-                        total: 12
-                    },
-                    {
-                        nom: 'Finesse',
-                        cara: 'Phy',
-                        bonus: null,
-                        total: 12
-                    },
-                    {
-                        nom: 'Logique',
-                        cara: 'Int',
-                        bonus: null,
-                        total: 12
-                    },
-                    {
-                        nom: 'Perception',
-                        cara: 'Int',
-                        bonus: null,
-                        total: 12
-                    },
-                    {
-                        nom: 'Puissance',
-                        cara: 'Phy',
-                        bonus: null,
-                        total: 45
-                    },
-                    {
-                        nom: 'Ruse',
-                        cara: 'Int',
-                        bonus: null,
-                        total: 33
-                    },
-                    {
-                        nom: 'Sports',
-                        cara: 'Phy',
-                        bonus: null,
-                        total: 45
-                    },
-                    {
-                        nom: 'Volonté',
-                        cara: 'Emp',
-                        bonus: null,
-                        total: 21
-                    },
-                ]
-            }
+            ]
         }
     },
     components: {

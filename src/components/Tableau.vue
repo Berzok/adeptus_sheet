@@ -1,21 +1,30 @@
 <template>
 
-
-    <table class="table table-bordered table-hover">
+    <table class="table table-bordered table-hover caption-top">
+        <caption>
+        </caption>
         <thead>
         <tr>
-            <th scope="col">Groupe</th>
-            <th scope="col"><em>Car.</em></th>
-            <th scope="col">Bonus</th>
-            <th scope="col">Total</th>
+            <th v-for="h in config.headers" :key="h" :class="h.class">
+                {{ h.label }}
+            </th>
         </tr>
         </thead>
         <tbody>
-        <tr v-for="g in groupes" :key="g">
-            <td>{{ g.nom }}</td>
-            <td>{{ g.cara }}</td>
-            <td>{{ g.bonus }}</td>
-            <td>{{ g.total }}</td>
+        <tr v-for="d in data" :key="d">
+            <td v-for="p in d" :key="p">
+                {{ p }}
+            </td>
+        </tr>
+        <tr v-for="i in config.emptyRows" :key="i">
+            <td v-for="p in config.headers.length" :key="p"></td>
+        </tr>
+        <tr>
+            <FormSelect></FormSelect>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
         </tr>
         </tbody>
     </table>
@@ -24,54 +33,27 @@
 
 
 <script lang="ts">
+import FormSelect from "./FormSelect.vue";
 export default {
     name: 'Tableau',
-    data() {
-        return {
-            groupes: [
-                {
-                    nom: 'Arts',
-                    cara: 'Emp',
-                    bonus: null,
-                    total: 12
-                },
-                {
-                    nom: 'Connaissances',
-                    cara: 'Int',
-                    bonus: null,
-                    total: 12
-                },
-                {
-                    nom: 'Éloquence',
-                    cara: 'Emp',
-                    bonus: null,
-                    total: 12
-                },
-                {
-                    nom: 'Finesse',
-                    cara: 'Phy',
-                    bonus: null,
-                    total: 12
-                },
-                {
-                    nom: 'Logique',
-                    cara: 'Int',
-                    bonus: null,
-                    total: 12
-                },
-                {
-                    nom: 'Perception',
-                    cara: 'Int',
-                    bonus: null,
-                    total: 12
-                },
-            ]
-        }
+    components: {FormSelect},
+    props: {
+        config: {
+            headers: {
+                nom: String,
+                label: String,
+                class: String
+            },
+            emptyRows: Number
+        },
+        data: [Object]
     }
 }
 
 </script>
 
 <style scoped>
-
+td:empty::after{
+    content: "\00a0"
+}
 </style>

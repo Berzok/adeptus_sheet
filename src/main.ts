@@ -1,7 +1,7 @@
 import {createApp, h, nextTick} from 'vue';
 import App from './App.vue';
 import router from './router';
-import $ from 'jquery';
+import axios from 'axios';
 
 const Vue = {
     createApp: createApp,
@@ -16,6 +16,8 @@ const Vue = {
 const app = Vue.createApp(App);
 
 app.use(router);
+
+app.provide('axios', app.config.globalProperties.axios)  // provide 'axios'
 
 app.mount('#app');
 

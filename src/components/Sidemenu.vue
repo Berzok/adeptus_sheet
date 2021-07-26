@@ -1,14 +1,19 @@
 <template>
-    <div id="sidemenu" hidden>
+    <div id="sidemenu">
         <ul class="nav nav-tabs flex-column align-self-start w-100 mt-5">
             <li class="nav-item my-3">
                 <router-link to="/accueil" active-class="active" class="nav-link">Accueil</router-link>
             </li>
             <li class="nav-item my-3">
-                <router-link to="/login" active-class="active" class="nav-link">Connexion</router-link>
+                <router-link to="/login" active-class="active" class="nav-link">Dashboard</router-link>
             </li>
-            <li class="nav-item my-3">
-                <router-link to="/overview" active-class="active" class="nav-link">Fiche de personnage</router-link>
+
+            <li>
+                <hr />
+            </li>
+
+            <li v-for="p in pages" :key="p" class="nav-item my-3">
+                <router-link :to="p.route" active-class="active" class="nav-link">{{ p.nom }}</router-link>
             </li>
         </ul>
     </div>
@@ -17,6 +22,24 @@
 <script>
 export default {
     name: 'Sidemenu',
+    data() {
+        return {
+            pages: [
+                {
+                    nom: 'Aperçu',
+                    route: '/overview'
+                },
+                {
+                    nom: 'Atouts / Handicaps',
+                    route: '/atouts_handicaps'
+                },
+                {
+                    nom: 'Psychologie',
+                    route: '/psychologie'
+                }
+            ]
+        }
+    },
     props: {
         message: String
     }

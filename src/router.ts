@@ -3,6 +3,7 @@ import Accueil from './components/Accueil.vue';
 import Login from './components/Login.vue';
 import Sidemenu from './components/Sidemenu.vue';
 import Overview from './components/Overview.vue';
+import AtoutsHandicaps from "./components/AtoutsHandicaps.vue";
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -14,21 +15,21 @@ const routes: Array<RouteRecordRaw> = [
         //component: () => import(/* webpackChunkName: "HelloWorld" */ './components/HelloWorld')
     },
     {
-        path: '/sidemenu',
-        name: 'Sidemenu',
-        component: Sidemenu,
-        // with webpack code splitting (best for larger apps, it can lazy load then):
-        //component: () => import(/* webpackChunkName: "HelloWorld" */ './components/HelloWorld')
-    },
-    {
         path: '/login',
         name: 'Login',
         component: Login, // without webpack code splitting
+        // with webpack code splitting (best for larger apps, it can lazy load then):
+        //component: () => import(/* webpackChunkName: "HelloWorld" */ './components/HelloWorld')
     },
     {
         path: '/overview',
         name: 'Overview',
         component: Overview, // without webpack code splitting
+    },
+    {
+        path: '/atouts_handicaps',
+        name: 'A_D',
+        component: AtoutsHandicaps,
     },
 ];
 

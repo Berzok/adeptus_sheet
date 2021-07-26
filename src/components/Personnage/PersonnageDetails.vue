@@ -1,7 +1,7 @@
 <template>
 
     <div class="card mb-3" style="width: 40%">
-        <h4 class="card-header">Détails du personnage</h4>
+        <h4 class="card-header border-bottom">Détails du personnage</h4>
         <div class="d-flex align-items-stretch g-0">
 
             <div id="imagePersonnage" class="img-fluid rounded border border-white flex-fill flex-grow-1"></div>
