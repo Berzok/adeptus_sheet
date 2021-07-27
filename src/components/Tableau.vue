@@ -19,13 +19,6 @@
         <tr v-for="i in config.emptyRows" :key="i">
             <td v-for="p in config.headers.length" :key="p"></td>
         </tr>
-        <tr>
-            <FormSelect></FormSelect>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
         </tbody>
     </table>
 
@@ -36,7 +29,6 @@
 import FormSelect from "./FormSelect.vue";
 export default {
     name: 'Tableau',
-    components: {FormSelect},
     props: {
         config: {
             headers: {

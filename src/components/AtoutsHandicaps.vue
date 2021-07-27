@@ -3,10 +3,7 @@
 
         <div class="d-flex flex-column">
 
-            <div class="d-flex flex-column">
-
-                <Atout class="d-flex align-items-center"></Atout>
-            </div>
+            <Atout v-bind:personnage="personnage" class="d-flex flex-column align-items-stretch"></Atout>
 
             <div>
                 <hr />

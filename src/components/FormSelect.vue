@@ -11,7 +11,6 @@
             <option selected></option>
         </select>
     </div>
-    {{ CDNJS() }}
 </template>
 
 
@@ -22,19 +21,21 @@ import axios from "axios";
 export default Vue.defineComponent({
     name: 'FormSelect',
     props: {
-        label: String,
-        options: Array
+        label: String
+    },
+    data() {
+        return {
+            options: {}
+        }
     },
     methods: {
-        CDNJS() {
-            return axios.get('https://api.cdnjs.com/libraries/jquery').then(r => {
-                console.dir(r.data.name);
-                return r.data.name;
-            });
+        async getOptions(route, params) {
+            const { data } = await axios.get('http://esoteria_api/atouts/getAll');
+            this.$data.options = data;
         }
     },
     created() {
-        this.CDNJS();
+        this.getOptions('atouts', 'getAll');
     }
 })
 </script>
