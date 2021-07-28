@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container-fluid wrapper pt-2">
         <form class="mx-auto">
             <div class="mb-3">
                 <label for="login_input" class="form-label">Login:</label>

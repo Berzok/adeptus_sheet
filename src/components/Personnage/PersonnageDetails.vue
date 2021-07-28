@@ -81,7 +81,7 @@
 </template>
 
 
-<script lang="ts">
+<script>
 import FormSelect from "../FormSelect.vue";
 
 export default {

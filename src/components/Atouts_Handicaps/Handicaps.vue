@@ -1,134 +1,76 @@
 <template>
-    <div class="container-fluid wrapper pt-2">
 
-        <div class="d-flex">
+    <div>
 
-            <PersonnageDetails></PersonnageDetails>
+        <div v-for="d in handicaps.data" :key="d" class="row text-start mb-1 gx-0">
 
-            <span class="mx-2"></span>
-
-            <div class="d-flex flex-column flex-grow-1">
-
-                <div class="d-flex flex-column flex-grow-1 justify-content-evenly">
-
-                    <div class="d-flex justify-content-around">
-                        <template v-for="c in caracteristiques.slice(0, 6)" :key="c">
-                            <CardNumber v-bind="c"></CardNumber>
-                        </template>
-
-
-                    </div>
-
-                    <!-- Fatigue, Blessures, Seuil d'effort -->
-                    <div class="d-flex justify-content-around">
-                        <template v-for="c in caracteristiques.slice(6, 11)" :key="c">
-                            <CardNumber v-bind="c"></CardNumber>
-                        </template>
-                    </div>
-
-                </div>
-
-                <div class="d-flex">
-
-                    <Tableau></Tableau>
-
-                </div>
+            <div class="col-1">
+                <select class="form-select">
+                    <option v-for="a in handicaps.data" :key="a" :value="a.id">{{ a.nom }}</option>
+                </select>
             </div>
 
+            <div class="col">
+                <span class="form-control">
+                    {{ d.type }}
+                </span>
+            </div>
+            <div class="col">
+                <span class="form-control">
+                    {{ d.valeur }}
+                </span>
+            </div>
+            <div class="col-4">
+                <span class="form-control">
+                    {{ d.effet }}
+                </span>
+            </div>
+            <div class="col-5">
+                <span class="form-control">
+                    {{ d.description }}
+                </span>
+            </div>
 
         </div>
 
+        <div class="row text-start gx-0">
+            <div class="col-2">
+                <button class="btn btn-success w-100">Ajouter un handicap</button>
+            </div>
+        </div>
+
     </div>
+
 </template>
 
 
-<script lang="ts">
-import PersonnageDetails from './Personnage/PersonnageDetails.vue';
-import CardNumber from './CardNumber.vue';
-import Tableau from './Tableau.vue';
+<script>
 
 export default {
-    name: "Overview",
-    mounted() {
-
-    },
+    name: 'Handicap',
     data() {
         return {
-            caracteristiques: [
-                {
-                    nom: 'Physique',
-                    current: 45,
-                    max: 45,
-                    order: 1,
-                },
-                {
-                    nom: 'Intelligence',
-                    current: 33,
-                    max: 33,
-                    order: 1,
-                },
-                {
-                    nom: 'Empathie',
-                    current: 21,
-                    max: 21,
-                    order: 1,
-                },
-                {
-                    nom: 'Synchronisation',
-                    current: 40,
-                    max: 40,
-                    order: 1,
-                },
-                {
-                    nom: 'Fortune',
-                    current: 0,
-                    max: 10,
-                    order: 1
-                },
-                {
-                    nom: 'Fatalité',
-                    current: 0,
-                    max: '??',
-                    order: -1
-                },
-                {
-                    nom: 'Fatigue',
-                    current: 0,
-                    max: 5,
-                    order: -1
-                },
-                {
-                    nom: 'Blessures',
-                    current: 0,
-                    max: 5,
-                    order: -1
-                },
-                {
-                    nom: "Seuil d'effort",
-                    current: 0,
-                    max: 33,
-                    order: -1
-                },
-                {
-                    nom: 'Stress',
-                    current: 0,
-                    max: 33,
-                    order: -1
-                },
-                {
-                    nom: 'Ego',
-                    current: 0,
-                    max: 21,
-                    order: -1
-                }
-            ]
+            handicaps: {
+                data: [
+                    {
+                        nom: 'Fuyard',
+                        type: 'Mental',
+                        valeur: 10,
+                        effet: 'Blabla',
+                        description: 'froussard!'
+                    },
+                    {
+                        nom: 'Fuyard',
+                        type: 'Mental',
+                        valeur: 10,
+                        effet: 'Blabla',
+                        description: 'froussard!'
+                    },
+                ]
+            }
         }
     },
-    components: {
-        'CardNumber': CardNumber,
-        'PersonnageDetails': PersonnageDetails,
-        'Tableau': Tableau
-    }
+    components: {}
 }
 //<CardNumber v-for="caracteristique in caracteristiques" :key="caracteristique.nom" :title="caracteristique.nom"></CardNumber>
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container-fluid wrapper pt-2">
         <div class="mx-auto">
             <h1>{{ message }}</h1>
             <router-link to="/login">Connexion</router-link>

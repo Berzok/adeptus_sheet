@@ -14,7 +14,7 @@
 </template>
 
 
-<script lang="ts">
+<script>
 import * as Vue from 'vue';
 import axios from "axios";
 
@@ -35,7 +35,7 @@ export default Vue.defineComponent({
         }
     },
     created() {
-        this.getOptions('atouts', 'getAll');
+        //this.getOptions('atouts', 'getAll');
     }
 })
 </script>

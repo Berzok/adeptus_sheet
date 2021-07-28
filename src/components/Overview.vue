@@ -12,8 +12,8 @@
                 <div class="d-flex flex-column flex-grow-1 justify-content-evenly">
 
                     <div class="d-flex justify-content-around">
-                        <template v-for="c in caracteristiques.slice(0, 6)" :key="c">
-                            <CardNumber v-bind="c"></CardNumber>
+                        <template v-for="c in 6" :key="c">
+                            <CardNumber v-model:data="caracteristiques[c-1]"></CardNumber>
                         </template>
 
 
@@ -42,7 +42,7 @@
 </template>
 
 
-<script lang="ts">
+<script>
 import PersonnageDetails from './Personnage/PersonnageDetails.vue';
 import CardNumber from './CardNumber.vue';
 import Tableau from './Tableau.vue';

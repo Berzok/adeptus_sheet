@@ -5,7 +5,7 @@ import Sidemenu from './components/Sidemenu.vue';
 import Overview from './components/Overview.vue';
 import AtoutsHandicaps from "./components/AtoutsHandicaps.vue";
 
-const routes: Array<RouteRecordRaw> = [
+const routes = [
     {
         path: '/',
         alias: '/accueil',

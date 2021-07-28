@@ -53,7 +53,7 @@ div{
     border-right: none;
 }
 #sidemenu{
-    width: 10%;
+    width: 12%;
 }
 a.nav-link.active{
     border: 2px solid #ea39b8;

@@ -1,32 +1,15 @@
 <template>
 
-    <div class="text-center overflow-hidden">
+    <div>
 
-        <div class="row border-bottom text-start mb-2 gx-0">
+        <div v-for="d in persoAtout" :key="d" class="row text-start mb-1 gx-0">
 
-            <div class="col-1">
-                <h4>Nom</h4>
-            </div>
-            <div class="col-1">
-                <h4>Type</h4>
-            </div>
-            <div class="col-1">
-                <h4>Valeur</h4>
-            </div>
-            <div class="col-4">
-                <h4>Effet</h4>
-            </div>
-            <div class="col-5">
-                <h4>Description</h4>
-            </div>
-
-        </div>
-
-        <div v-for="d in atouts.data" :key="d" class="row text-start mb-1 gx-0">
 
             <div class="col-1">
                 <select class="form-select">
-                    <option v-for="a in atouts.data" :key="a" :value="a.id">{{ a.nom }}</option>
+                    <option v-for="a in atouts.data" :key="a" :value="a.nom" v-bind="isCurrent(a, d)">
+                        {{ a.nom }}
+                    </option>
                 </select>
             </div>
 
@@ -64,19 +47,35 @@
 </template>
 
 
-<script lang="ts">
+<script>
 
 import FormSelect from "../FormSelect.vue";
 import Tableau from "../Tableau.vue";
 
 export default {
     name: 'Atout',
+    methods: {
+        isCurrent(a, d) {
+            return (a.nom === d.nom ? {
+                selected: ''
+            } : '');
+        }
+    },
+    props: {
+        persoAtout: {
+            nom: String,
+            type: String,
+            valeur: Number,
+            effet: String,
+            description: String
+        }
+    },
     data() {
         return {
             atouts: {
                 data: [
                     {
-                        nom: 'Fuyard',
+                        nom: 'Affaibli',
                         type: 'Mental',
                         valeur: 10,
                         effet: 'Blabla',
@@ -88,25 +87,7 @@ export default {
                         valeur: 10,
                         effet: 'Blabla',
                         description: 'froussard!'
-                    },
-                ]
-            },
-            handicaps: {
-                data: [
-                    {
-                        nom: 'Fuyard',
-                        type: 'Mental',
-                        valeur: 10,
-                        effet: 'Blabla',
-                        description: 'froussard!'
-                    },
-                    {
-                        nom: 'Fuyard',
-                        type: 'Mental',
-                        valeur: 10,
-                        effet: 'Blabla',
-                        description: 'froussard!'
-                    },
+                    }
                 ]
             }
         }

@@ -6,7 +6,7 @@ module.exports = {
     pages: {
         index: {
             entry: [
-                './src/main.ts'
+                './src/main.js'
             ]
         }
     }
