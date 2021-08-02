@@ -4,6 +4,7 @@ import Login from './components/Login.vue';
 import Sidemenu from './components/Sidemenu.vue';
 import Overview from './components/Overview.vue';
 import AtoutsHandicaps from "./components/AtoutsHandicaps.vue";
+import Psychologie from "./components/Psychologie";
 
 const routes = [
     {
@@ -30,6 +31,11 @@ const routes = [
         path: '/atouts_handicaps',
         name: 'A_D',
         component: AtoutsHandicaps,
+    },
+    {
+        path: '/psychologie',
+        name: 'Psychologie',
+        component: Psychologie,
     },
 ];
 

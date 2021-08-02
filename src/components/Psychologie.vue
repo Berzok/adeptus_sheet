@@ -13,8 +13,7 @@
                     </div>
                 </div>
 
-
-                <Atouts :data="atouts" :personnage="personnage"></Atouts>
+                <Atout :persoAtout="personnage.atouts"></Atout>
             </div>
 
             <div>
@@ -31,39 +30,23 @@
                     </div>
                 </div>
 
-                <Handicaps :data="handicaps" :personnage="personnage"></Handicaps>
+                <Handicap></Handicap>
             </div>
 
         </div>
-
-        <button @click="displayData()" class="btn btn-info">Voir data</button>
 
     </div>
 </template>
 
 
 <script>
-import {inject} from 'vue';
-import Atouts from './Atouts_Handicaps/Atouts.vue';
-import Handicaps from "./Atouts_Handicaps/Handicaps.vue";
+import Atout from './Atouts_Handicaps/Atouts.vue';
+import Handicap from "./Atouts_Handicaps/Handicaps.vue";
 
 export default {
-    name: "AtoutsHandicaps",
-    setup(){
-        let personnage = inject('personnage');
-        let atouts = inject('data').atouts;
-        let handicaps = inject('data').handicaps;
+    name: "Psychologie",
+    mounted() {
 
-        return {
-            personnage,
-            atouts,
-            handicaps
-        };
-    },
-    methods: {
-        displayData(){
-            console.dir(this.personnage);
-        }
     },
     data() {
         return {
@@ -89,11 +72,22 @@ export default {
                     colSize: 5
                 }
             ],
+            personnage: {
+                atouts: [
+                    {
+                        nom: 'Affaibli',
+                        type: 'Mental',
+                        valeur: 10,
+                        effet: 'Blabla',
+                        description: 'froussard!'
+                    }
+                ]
+            }
         }
     },
     components: {
-        Handicaps,
-        Atouts
+        Handicap,
+        Atout
     }
 }
 //<CardNumber v-for="caracteristique in caracteristiques" :key="caracteristique.nom" :title="caracteristique.nom"></CardNumber>

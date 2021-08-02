@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <div v-for="(d, index) in personnage.handicaps" :key="d" class="row text-start mb-1 gx-0">
+        <div v-for="(d, index) in personnage.atouts" :key="d" class="row text-start mb-1 gx-0">
 
             <div class="col-1">
                 <select @change="setAtout($event, index)" class="form-select">
@@ -51,9 +51,11 @@
 
 
 <script>
+import {defineComponent, h} from 'vue';
+import FormSelect from "../FormSelect.vue";
 
 export default {
-    name: 'Handicaps',
+    name: 'Atouts',
     methods: {
         isCurrent(a, d) {
             return (a.nom === d.nom ? {
@@ -61,7 +63,7 @@ export default {
             } : '');
         },
         addAtout(){
-            this.$props.personnage.handicaps.push({
+            this.$props.personnage.atouts.push({
                 nom: '',
                 type: '',
                 valeur: null,
@@ -71,20 +73,20 @@ export default {
         },
         setAtout($event, index){
             let dataIndex = $event.target.selectedIndex - 1;
-            this.$props.personnage.handicaps[index] = this.$props.data[dataIndex];
+            this.$props.personnage.atouts[index] = this.$props.data[dataIndex];
         },
         removeAtout($event, index){
             if(index === 0){
                 return;
             }
             let dataIndex = $event.target.selectedIndex;
-            this.$props.personnage.handicaps[index] = this.$props.data[dataIndex];
-            this.$props.personnage.handicaps.splice(index, 1);
+            this.$props.personnage.atouts[index] = this.$props.data[dataIndex];
+            this.$props.personnage.atouts.splice(index, 1);
         }
     },
     props: {
         personnage: {
-            handicaps: [
+            atouts: [
                 {
                     nom: String,
                     type: String,

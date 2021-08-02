@@ -3,7 +3,10 @@
 
         <div class="d-flex">
 
-            <PersonnageDetails></PersonnageDetails>
+            <PersonnageDetails
+                    v-bind:details="getPersonnageDetails()"
+            >
+            </PersonnageDetails>
 
             <span class="mx-2"></span>
 
@@ -13,7 +16,7 @@
 
                     <div class="d-flex justify-content-around">
 
-                        <template v-for="c in caracteristiques.slice(0, 6)" :key="c">
+                        <template v-for="c in personnage.caracteristiques.slice(0, 6)" :key="c">
                             <CardNumber
                                 v-model:nom="c.nom"
                                 v-model:current="c.current"
@@ -27,7 +30,7 @@
 
                     <!-- Fatigue, Blessures, Seuil d'effort -->
                     <div class="d-flex justify-content-around">
-                        <template v-for="c in caracteristiques.slice(6, 11)" :key="c">
+                        <template v-for="c in personnage.caracteristiques.slice(6, 11)" :key="c">
                             <CardNumber
                                 v-model:nom="c.nom"
                                 v-model:current="c.current"
@@ -63,82 +66,22 @@
 import PersonnageDetails from './Personnage/PersonnageDetails.vue';
 import CardNumber from './CardNumber.vue';
 import Tableau from './Tableau.vue';
+import {inject} from 'vue';
 
 export default {
     name: "Overview",
     mounted() {
 
     },
+    setup() {
+        let personnage = inject('personnage');
+
+        return {
+            personnage
+        };
+    },
     data() {
         return {
-            caracteristiques: [
-                {
-                    nom: 'Physique',
-                    current: 45,
-                    max: 45,
-                    order: 1,
-                },
-                {
-                    nom: 'Intelligence',
-                    current: 33,
-                    max: 33,
-                    order: 1,
-                },
-                {
-                    nom: 'Empathie',
-                    current: 21,
-                    max: 21,
-                    order: 1,
-                },
-                {
-                    nom: 'Synchronisation',
-                    current: 40,
-                    max: 40,
-                    order: 1,
-                },
-                {
-                    nom: 'Fortune',
-                    current: 0,
-                    max: 10,
-                    order: 1
-                },
-                {
-                    nom: 'Fatalité',
-                    current: 0,
-                    max: 99,
-                    order: -1
-                },
-                {
-                    nom: 'Fatigue',
-                    current: 0,
-                    max: 5,
-                    order: -1
-                },
-                {
-                    nom: 'Blessures',
-                    current: 0,
-                    max: 5,
-                    order: -1
-                },
-                {
-                    nom: "Seuil d'effort",
-                    current: 0,
-                    max: 33,
-                    order: -1
-                },
-                {
-                    nom: 'Stress',
-                    current: 0,
-                    max: 33,
-                    order: -1
-                },
-                {
-                    nom: 'Ego',
-                    current: 0,
-                    max: 21,
-                    order: -1
-                }
-            ],
             tableau: {
                 config: {
                     headers: [
@@ -227,6 +170,12 @@ export default {
                     },
                 ]
             }
+        }
+    },
+    methods: {
+        getPersonnageDetails(){
+            const {atouts, handicaps, caracteristiques, ...character} = this.personnage;
+            return character;
         }
     },
     components: {
