@@ -4,15 +4,19 @@
         <h5 class="card-header border-bottom">{{ nom }}</h5>
         <div class="card-body">
             <div class="input-group input-group-lg flex-nowrap">
-                <input ref="current" :value="current" class="form-control text-center p-0" maxlength="2" type="text"
-                       size="2" @input="checkValue($event, max, order)">
+                <input :value="current"
+                       :class="currentClass"
+                       @keyup="checkValue($event)"
+                       @input="$emit('update:current', Number.parseInt($event.target.value) || 0)"
+                       class="form-control text-center p-0" maxlength="2" type="text" size="2">
                 <span class="input-group-text">/</span>
-                <input ref="max" :value="max" class="text-success form-control text-center bg-dark p-0" maxlength="2"
+                <input :value="max"
+                       :class="maxClass"
+                       @input="$emit('update:max', Number.parseInt($event.target.value) || 0)"
+                       class="text-success form-control text-center bg-dark p-0" maxlength="2"
                        type="text"
                        size="2">
             </div>
-            <h3 class="card-text">
-            </h3>
         </div>
     </div>
 
@@ -24,24 +28,41 @@ import * as Vue from 'vue';
 
 export default {
     name: 'CardNumber',
+    data() {
+        return {
+            currentClass: this.current >= this.max ? 'text-success' : 'text-warning',
+            maxClass: this.order === -1 ? 'text-warning' : 'text-success',
+        }
+    },
     props: {
         nom: String,
         current: Number,
-        max: [Number, String],
-        order: Number
+        max: Number,
+        order: Number,
     },
+    emits: [
+        'update:current',
+        'update:max',
+    ],
     methods: {
-        checkValue(current, max, order) {
-            console.dir(current.target.value);
-            current = Number.parseInt(current.target.value);
-            console.dir(max);
-            console.dir(order);
-            let classToToggle = (current * order) < (max * order) ? 'text-warning' : 'text-success';
-            this.$refs.current.classList.toggle(classToToggle);
+        updateClass(){
+            return ((this.max * this.order) >= this.current) ? 'text-success' : 'text-warning';
+        },
+        checkValue(event) {
+            let target = event.target;
+            let newValue = Number.parseInt(target.value);
+
+            let newClass;
+            if( (newValue < this.max && this.order === 1) ||
+                (this.order === -1)){
+                newClass = 'text-warning';
+            }else{
+                newClass = 'text-success';
+            }
+
+            this.currentClass = newClass;
         }
     },
-    created() {
-    }
 }
 
 </script>

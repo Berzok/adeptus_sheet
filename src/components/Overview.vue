@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid wrapper pt-2">
+    <div class="d-flex flex-column container-fluid wrapper pt-2">
 
         <div class="d-flex">
 
@@ -12,17 +12,29 @@
                 <div class="d-flex flex-column flex-grow-1 justify-content-evenly">
 
                     <div class="d-flex justify-content-around">
-                        <template v-for="c in 6" :key="c">
-                            <CardNumber v-model:data="caracteristiques[c-1]"></CardNumber>
-                        </template>
 
+                        <template v-for="c in caracteristiques.slice(0, 6)" :key="c">
+                            <CardNumber
+                                v-model:nom="c.nom"
+                                v-model:current="c.current"
+                                v-model:max="c.max"
+                                v-model:order="c.order"
+                                @input="$emit('update:modelValue', $event.target.value)">
+                            </CardNumber>
+                        </template>
 
                     </div>
 
                     <!-- Fatigue, Blessures, Seuil d'effort -->
                     <div class="d-flex justify-content-around">
                         <template v-for="c in caracteristiques.slice(6, 11)" :key="c">
-                            <CardNumber v-bind="c"></CardNumber>
+                            <CardNumber
+                                v-model:nom="c.nom"
+                                v-model:current="c.current"
+                                v-model:max="c.max"
+                                v-model:order="c.order"
+                                @input="$emit('update:modelValue', $event.target.value)">
+                            </CardNumber>
                         </template>
                     </div>
 
@@ -35,7 +47,12 @@
                 </div>
             </div>
 
+        </div>
 
+        <div class="d-flex flex-grow-1 align-items-stretch pb-2">
+            <button class="btn btn-primary btn-outline-success form-control">
+                <span class="h3">Sauvegarder</span>
+            </button>
         </div>
 
     </div>
@@ -88,7 +105,7 @@ export default {
                 {
                     nom: 'Fatalité',
                     current: 0,
-                    max: '??',
+                    max: 99,
                     order: -1
                 },
                 {
