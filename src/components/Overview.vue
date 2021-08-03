@@ -4,8 +4,8 @@
         <div class="d-flex">
 
             <PersonnageDetails
-                    v-bind:details="getPersonnageDetails()"
-            >
+                    :data="data"
+                    :personnage="personnage">
             </PersonnageDetails>
 
             <span class="mx-2"></span>
@@ -53,7 +53,7 @@
         </div>
 
         <div class="d-flex flex-grow-1 align-items-stretch pb-2">
-            <button class="btn btn-primary btn-outline-success form-control">
+            <button @click="displayData" class="btn btn-primary btn-outline-success form-control">
                 <span class="h3">Sauvegarder</span>
             </button>
         </div>
@@ -70,13 +70,16 @@ import {inject} from 'vue';
 
 export default {
     name: "Overview",
-    mounted() {
-
-    },
     setup() {
         let personnage = inject('personnage');
+        let origine = inject('data').origine;
+        let sexe = inject('data').sexe;
 
         return {
+            data: {
+                origine,
+                sexe,
+            },
             personnage
         };
     },
@@ -176,6 +179,9 @@ export default {
         getPersonnageDetails(){
             const {atouts, handicaps, caracteristiques, ...character} = this.personnage;
             return character;
+        },
+        displayData(){
+            console.dir(this.$data);
         }
     },
     components: {

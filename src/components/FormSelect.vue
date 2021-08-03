@@ -1,41 +1,44 @@
 <template>
 
-    <label v-if="label" for="originePersonnage" class="col col-form-label">
+    <label for="originePersonnage" class="col col-form-label">
         {{ label }}:
     </label>
     <div class="col-auto">
-        <select id="originePersonnage" class="form-select">
-            <option v-for="o in options" v-bind:key="o" :value="o.value">
-                {{ o.nom }}
+        <select id="originePersonnage" @change="setSelected($event, index)" class="form-select">
+            <option></option>
+            <option v-for="d in data" :key="d" :value="d.value" :selected="objectEquals(d, selected)">
+                {{ d.nom }}
             </option>
-            <option selected></option>
         </select>
     </div>
 </template>
 
 
 <script>
-import * as Vue from 'vue';
-import axios from "axios";
+import {defineComponent, reactive} from "vue";
+import {isEqual} from 'lodash';
 
-export default Vue.defineComponent({
+export default defineComponent({
     name: 'FormSelect',
-    props: {
-        label: String
-    },
-    data() {
+    setup(props){
         return {
-            options: {}
+            selected: reactive(props.bound)
         }
+    },
+    props: {
+        label: String,
+        data: Array,
+        bound: Object
     },
     methods: {
-        async getOptions(route, params) {
-            const { data } = await axios.get('http://esoteria_api/atouts/getAll');
-            this.$data.options = data;
-        }
-    },
-    created() {
-        //this.getOptions('atouts', 'getAll');
+        setSelected($event, index) {
+            let dataIndex = $event.target.selectedIndex - 1;
+            this.selected.nom = this.$props.data[dataIndex].nom;
+            this.selected.value = this.$props.data[dataIndex].value;
+        },
+        objectEquals(a, b){
+            return isEqual(a, b);
+        },
     }
 })
 </script>

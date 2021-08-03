@@ -94,13 +94,7 @@ export default {
                 }
             ],
         },
-        data: {
-            nom: String,
-            type: String,
-            valeur: Number,
-            effet: String,
-            description: String
-        }
+        data: Array
     },
     components: {}
 };

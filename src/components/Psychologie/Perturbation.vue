@@ -48,65 +48,14 @@
         </div>
 
     </div>
-
 </template>
 
-
 <script>
-import {defineComponent, h} from 'vue';
-import FormSelect from "../FormSelect.vue";
-
 export default {
-    name: 'Atouts',
-    methods: {
-        isCurrent(a, d) {
-            return (a.nom === d.nom ? {
-                selected: ''
-            } : '');
-        },
-        addAtout() {
-            this.$props.personnage.atouts.push({
-                nom: '',
-                type: '',
-                valeur: null,
-                effet: '',
-                description: ''
-            })
-        },
-        setAtout($event, index) {
-            let dataIndex = $event.target.selectedIndex - 1;
-            this.$props.personnage.atouts[index] = this.$props.data[dataIndex];
-        },
-        removeAtout($event, index) {
-            if (index === 0) {
-                return;
-            }
-            let dataIndex = $event.target.selectedIndex;
-            this.$props.personnage.atouts[index] = this.$props.data[dataIndex];
-            this.$props.personnage.atouts.splice(index, 1);
-        }
-    },
-    props: {
-        personnage: {
-            atouts: [
-                {
-                    nom: String,
-                    type: String,
-                    valeur: Number,
-                    effet: String,
-                    description: String
-                }
-            ],
-        },
-        data: Array
-    },
-    components: {}
-};
-//<CardNumber v-for="caracteristique in caracteristiques" :key="caracteristique.nom" :title="caracteristique.nom"></CardNumber>
+    name: "Perturbations"
+}
 </script>
 
 <style scoped>
-span {
-    height: 100%;
-}
+
 </style>
