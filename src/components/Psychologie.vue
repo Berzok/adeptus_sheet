@@ -16,7 +16,7 @@
                 <div class="d-flex flex-wrap">
                     <template v-for="t in personnage.traumatismes" :key="t">
                         <div class="d-flex w-100 mb-2">
-                            <Traumatisme :data="traumatismes" :bound="t" class="d-flex flex-fill me-1"></Traumatisme>
+                            <Traumatisme :data="data.traumatismes" :bound="t" class="d-flex flex-fill me-1"></Traumatisme>
                             <button @click="retirerTraumatisme(t)" class="btn btn-danger">X</button>
                         </div>
                     </template>
@@ -60,12 +60,14 @@ export default defineComponent({
     name: "Psychologie",
     setup(props) {
         let personnage = inject('personnage');
-        let traumatismes = inject('data').traumatismes;
+        let data = inject('data');
+        let traumatismes = data.traumatismes;
         let effondrements = inject('data').effondrements;
         let perturbations = inject('data').perturbations;
 
         return {
             personnage,
+            data,
             traumatismes,
             effondrements,
             perturbations
@@ -96,13 +98,13 @@ export default defineComponent({
     methods: {
         ajouterTraumatisme() {
             this.personnage.traumatismes.push({
-                nom: '',
+                id: '',
                 rang: 1
             })
         },
         retirerTraumatisme(t){
             remove(this.personnage.traumatismes, (v) => {
-                return v.nom === t.nom;
+                return v.id === t.id;
             });
         }
     },

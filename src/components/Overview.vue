@@ -63,21 +63,22 @@
 
 
 <script>
+import {defineComponent, inject} from 'vue';
 import PersonnageDetails from './Personnage/PersonnageDetails.vue';
 import CardNumber from './CardNumber.vue';
 import Tableau from './Tableau.vue';
-import {inject} from 'vue';
 
-export default {
+export default defineComponent({
     name: "Overview",
     setup() {
         let personnage = inject('personnage');
-        let origine = inject('data').origine;
-        let sexe = inject('data').sexe;
+        let data = inject('data');
+        let origines = data.origines;
+        let sexe = data.sexe;
 
         return {
             data: {
-                origine,
+                origines,
                 sexe,
             },
             personnage
@@ -189,7 +190,7 @@ export default {
         'PersonnageDetails': PersonnageDetails,
         'Tableau': Tableau
     }
-}
+})
 //<CardNumber v-for="caracteristique in caracteristiques" :key="caracteristique.nom" :title="caracteristique.nom"></CardNumber>
 </script>
 

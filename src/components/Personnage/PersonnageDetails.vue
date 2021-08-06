@@ -23,21 +23,29 @@
                 </div>
 
                 <div class="row">
-                    <FormSelect
-                            :data="data.origine"
-                            :label="'Origine'"
-                            :bound="personnage.origine">
-                    </FormSelect>
+                    <label for="originePersonnage" class="col col-form-label">Origine: </label>
+                    <div class="col-auto">
+                        <select id="originePersonnage" v-model="details.origine" class="form-select">
+                            <option></option>
+                            <option v-for="o in data.origines" :key="o"
+                                    :value="o._id"
+                                    :selected="o._id === details.origine">
+                                {{ o.nom }}
+                            </option>
+                        </select>
+                    </div>
                 </div>
 
                 <hr/>
 
                 <div class="row">
-                    <FormSelect
-                            :data="data.sexe"
-                            :label="'Sexe'"
-                            :bound="personnage.sexe">
-                    </FormSelect>
+                    <label for="sexePersonnage" class="col col-form-label">Sexe: </label>
+                    <div class="col-auto">
+                        <select id="sexePersonnage" v-model="details.sexe" class="form-select">
+                            <option value="F" :selected="details.sexe === 'F'">F</option>
+                            <option value="M" :selected="details.sexe === 'M'">M</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="row">
@@ -82,7 +90,7 @@
 
         <div class="card-footer d-flex flex-column">
             <label for="descriptionPersonnage" class="form-label">Description/histoire: </label>
-            <textarea v-model="details.description" id="descriptionPersonnage" class="form-control" rows="7"></textarea>
+            <textarea v-model="details.description" id="descriptionPersonnage" class="form-control" rows="8"></textarea>
         </div>
 
     </div>
@@ -106,10 +114,7 @@ export default defineComponent({
                 nom: String,
                 value: Number
             },
-            sexe: {
-                nom: String,
-                value: Number,
-            }
+            sexe: String
         },
         personnage: {
             nom: String,
@@ -120,10 +125,7 @@ export default defineComponent({
     },
     emits: [
         'update:description',
-    ],
-    components: {
-        'FormSelect': FormSelect
-    }
+    ]
 })
 </script>
 

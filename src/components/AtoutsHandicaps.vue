@@ -4,7 +4,6 @@
         <div class="d-flex flex-column">
 
             <div>
-
                 <h3>Atouts</h3>
 
                 <div class="row border-bottom text-start mb-2 gx-0">
@@ -22,7 +21,6 @@
             </div>
 
             <div class="handicaps">
-
                 <h3>Handicaps</h3>
 
                 <div class="row border-bottom text-start mb-2 gx-0">

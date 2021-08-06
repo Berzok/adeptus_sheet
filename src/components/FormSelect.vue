@@ -4,9 +4,9 @@
         {{ label }}:
     </label>
     <div class="col-auto">
-        <select id="originePersonnage" @change="setSelected($event, index)" class="form-select">
+        <select id="originePersonnage" v-model="selected" class="form-select">
             <option></option>
-            <option v-for="d in data" :key="d" :value="d.value" :selected="objectEquals(d, selected)">
+            <option v-for="d in data" :key="d" :value="d._id" :selected="d._id === selected">
                 {{ d.nom }}
             </option>
         </select>
@@ -15,27 +15,25 @@
 
 
 <script>
-import {defineComponent, reactive} from "vue";
+import {defineComponent, reactive, ref, toRefs} from "vue";
 import {isEqual} from 'lodash';
 
 export default defineComponent({
     name: 'FormSelect',
     setup(props){
+        let selected = reactive(Object(props.bound));
+
+        console.dir(selected);
         return {
-            selected: reactive(props.bound)
+            selected
         }
     },
     props: {
         label: String,
         data: Array,
-        bound: Object
+        bound: String
     },
     methods: {
-        setSelected($event, index) {
-            let dataIndex = $event.target.selectedIndex - 1;
-            this.selected.nom = this.$props.data[dataIndex].nom;
-            this.selected.value = this.$props.data[dataIndex].value;
-        },
         objectEquals(a, b){
             return isEqual(a, b);
         },

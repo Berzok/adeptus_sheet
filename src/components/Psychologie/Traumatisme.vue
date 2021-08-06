@@ -3,8 +3,9 @@
     <div class="text-start  gx-0">
 
         <div class="col-2">
-            <select v-model="traumatisme.nom" class="form-select">
-                <option v-for="a in data" :key="a" :value="a.nom" :selected="a.nom === traumatisme.nom">
+            <select v-model="traumatisme.id" class="form-select">
+                <option></option>
+                <option v-for="a in data" :key="a" :value="a._id" :selected="a._id === traumatisme.id">
                     {{ a.nom }}
                 </option>
             </select>
@@ -36,7 +37,7 @@
 import {defineComponent, reactive} from "vue";
 
 export default defineComponent({
-    name: "Traumatismes",
+    name: "Traumatisme",
     setup(props) {
         let traumatisme = reactive(props.bound);
 
@@ -58,16 +59,16 @@ export default defineComponent({
     computed: {
         description() {
             let leTrauma = this.data.find(value => {
-                return value.nom === this.traumatisme.nom;
+                return value._id === this.traumatisme.id;
             });
             if(leTrauma === undefined){
                 return '\n';
             }
-            return leTrauma.description[this.traumatisme.rang - 1];
+            return leTrauma.description;
         },
         effet() {
             let leTrauma = this.data.find(value => {
-                return value.nom === this.traumatisme.nom;
+                return value._id === this.traumatisme.id;
             });
             if(leTrauma === undefined){
                 return '\n';
