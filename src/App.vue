@@ -1,43 +1,53 @@
 <template>
+    <Navbar/>
+    <Spinner/>
+    <div class="d-flex flex-nowrap">
+        <router-view/>
+    </div>
+    <!--
     <div class="d-flex min-vh-100">
         <Sidemenu class="navbar order-1 bg-primary"></Sidemenu>
         <Wrapper>
         </Wrapper>
     </div>
+    -->
 </template>
 
 <script>
-import {provide, reactive} from 'vue';
-import Sidemenu from './components/Sidemenu';
-import Wrapper from "./components/Wrapper";
-
+import {defineComponent} from 'vue';
+import Navbar from './components/Navbar';
+import Spinner from './components/Spinner';
+import axios from "axios";
 
 //Could be useful:
 // https://marozed.com/vue-cheatsheet/
-export default {
+export default defineComponent({
     name: 'App',
     components: {
-        Wrapper,
-        'Sidemenu': Sidemenu
+        Spinner,
+        Navbar
     },
-    data: () => ({
-        currentRoute: window.location.pathname
-    }),
-    setup() {
-
-        //let info = useSWRV('http://www.esoteria.arae.rest/personnage/get/610bad0266bb93101bfee7bf', getPersonnage);
-    },
-    computed: {
-        CurrentComponent() {
-            console.dir(this.$route.name);
-            return this.$route.name;
+    data() {
+        return {
+            personnage: {}
         }
     },
-}
+    mounted() {
+        //let info = useSWRV('http://www.esoteria.arae.rest/personnage/get/610bad0266bb93101bfee7bf', getPersonnage);
+        axios.post('http://www.esoteria.arae.rest/personnage/get/610bad0266bb93101bfee7bf').then((response, error) => {
+            const data = response.data;
+            this.personnage = data;
+        });
+        //console.dir(Neutralino);
+        console.dir(this.personnage);
+        //Neutralino.storage.setData('personnage', this.personnage);
+    },
+    computed: {
+    },
+})
 </script>
 
 <style>
-@import '~bootswatch/dist/darkly/bootstrap.min.css';
 
 label, span {
     user-select: none;

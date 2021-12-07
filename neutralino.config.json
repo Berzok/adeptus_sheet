@@ -1,0 +1,40 @@
+{
+    "applicationId": "js.neutralino.adeptus",
+    "port": 0,
+    "defaultMode": "browser",
+    "url": "/",
+    "logging": {
+        "enabled": true
+    },
+    "nativeBlockList": [],
+    "globalVariables": {
+        "NL_PORT": 5050
+    },
+    "enableServer": true,
+    "enableNativeAPI": true,
+    "modes": {
+        "window": {
+            "title": "adeptus",
+            "width": 800,
+            "height": 500,
+            "fullScreen": false,
+            "alwaysOnTop": false,
+            "icon": "/src/assets/logo.png",
+            "enableInspector": false,
+            "borderless": false,
+            "maximize": false
+        },
+        "browser": {
+            "icon": "/src/assets/logo.png"
+        },
+        "cloud": {}
+    },
+    "cli": {
+        "binaryName": "adeptus",
+        "resourcesPath": "/dist/",
+        "clientLibrary": "/src/neutralino.js",
+        "binaryVersion": "3.0.0",
+        "clientVersion": "2.0.0",
+        "extensionsPath": "/extensions/"
+    }
+}

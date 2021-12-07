@@ -1,5 +1,6 @@
 <template>
     <div id="sidemenu">
+
         <ul class="nav nav-tabs flex-column align-self-start w-100 mt-5">
             <li class="nav-item my-3">
                 <router-link to="/accueil" active-class="active" class="nav-link">Accueil</router-link>
@@ -9,19 +10,24 @@
             </li>
 
             <li>
-                <hr />
+                <hr/>
             </li>
 
             <li v-for="p in pages" :key="p" class="nav-item my-3">
                 <router-link :to="p.route" active-class="active" class="nav-link">{{ p.nom }}</router-link>
             </li>
         </ul>
+
+        <button class="btn-success btn-outline-info" @click="save">Enregistrer</button>
+
     </div>
 </template>
 
 <script>
-export default {
-    name: 'Sidemenu',
+import {defineComponent} from "vue";
+
+export default defineComponent({
+    name: 'Navbar',
     data() {
         return {
             pages: [
@@ -40,22 +46,29 @@ export default {
             ]
         }
     },
+    methods: {
+        save() {
+
+        }
+    },
     props: {
         message: String
     }
-}
+})
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-div{
+div {
     border: 1px solid #44d9e8;
     border-right: none;
 }
-#sidemenu{
+
+#sidemenu {
     width: 12%;
 }
-a.nav-link.active{
+
+a.nav-link.active {
     border: 2px solid #ea39b8;
     border-left: none;
     border-right: none;
