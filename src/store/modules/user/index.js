@@ -18,5 +18,3 @@ export const userStore = createStore({
 export function useStore() {
     return userStore;
 }
-
-//# sourceMappingURL=index.js.map

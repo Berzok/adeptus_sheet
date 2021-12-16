@@ -42,7 +42,7 @@
 
 <script>
 import {inject} from 'vue';
-import Atouts from './Atouts_Handicaps/Atouts.vue';
+import Atouts from 'src/components/Personnage/Atouts.vue';
 import Handicaps from "./Atouts_Handicaps/Handicaps.vue";
 
 export default {

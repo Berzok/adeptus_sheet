@@ -9,6 +9,7 @@ function configure(configuration) {
     loadStore().dispatch(loadingActionTypes.beginLoading, undefined);
     const conf = configuration;
     conf.timeout = 180000;
+    conf.baseURL = process.env.VITE_API_URL;
     return conf;
 }
 

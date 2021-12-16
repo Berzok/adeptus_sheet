@@ -1,71 +1,105 @@
 <template>
-    <div id="sidemenu">
 
-        <ul class="nav nav-tabs flex-column align-self-start w-100 mt-5">
-            <li class="nav-item my-3">
-                <router-link to="/accueil" active-class="active" class="nav-link">Accueil</router-link>
-            </li>
-            <li class="nav-item my-3">
-                <router-link to="/login" active-class="active" class="nav-link">Dashboard</router-link>
-            </li>
+	<nav class="navbar navbar-expand pt-0 bg-secondary border-end border-info sticky-top flex-column">
 
-            <li>
-                <hr/>
-            </li>
+		<Image id="navbar_image"
+					 :src="getImageSource"
+					 imageClass="rounded border border-dark"
+		></Image>
 
-            <li v-for="p in pages" :key="p" class="nav-item my-3">
-                <router-link :to="p.route" active-class="active" class="nav-link">{{ p.nom }}</router-link>
-            </li>
-        </ul>
+		<hr />
 
-        <button class="btn-success btn-outline-info" @click="save">Enregistrer</button>
+		<Button label="Déconnexion" icon="pi pi-sign-out" class="btn btn-danger btn-outline-dark" @click="logout"/>
 
-    </div>
+		<ul class="nav nav-tabs flex-column w-100 mt-5">
+			<li v-for="p in pages" :key="p" class="nav-item my-3">
+				<router-link v-if="p.enabled" :to="p.route" active-class="active" class="nav-link">{{ p.nom }}</router-link>
+			</li>
+		</ul>
+
+		<button class="btn btn-primary btn-outline-success" @click="save">Enregistrer</button>
+
+	</nav>
 </template>
 
 <script>
 import {defineComponent} from "vue";
+import {useStore} from "./../store/personnage";
+import router from "./../router";
+import axios from "axios";
+import Button from 'primevue/button';
+import Image from "primevue/image";
 
 export default defineComponent({
     name: 'Navbar',
+    components: {
+        Button,
+        Image
+    },
+    computed: {
+        getImageSource() {
+            let src = './placeholder.jpg';
+            if (this.personnage.image) {
+                src = process.env.VITE_API_URL + '/image/get/' + this.personnage.image;
+            }
+            return src;
+        }
+    },
     data() {
         return {
+            selected: {},
             pages: [
                 {
                     nom: 'Aperçu',
-                    route: '/overview'
+                    route: '/overview',
+                    enabled: true
                 },
                 {
-                    nom: 'Atouts / Handicaps',
-                    route: '/atouts_handicaps'
+                    nom: 'Compétences',
+                    route: '/competences',
+                    enabled: true
                 },
                 {
                     nom: 'Psychologie',
-                    route: '/psychologie'
+                    route: '/psychologie',
+                    enabled: false
                 }
             ]
         }
     },
+    mounted() {
+    },
     methods: {
         save() {
-
-        }
+            let dataToSend = this.personnage;
+						console.dir(dataToSend);
+            dataToSend.image = dataToSend.image.split('/').pop();
+            axios.post('/personnage/save', dataToSend).then((response, error) => {
+                //this.personnage = response.data;
+            });
+        },
+				logout(){
+						const store = useStore();
+            store.$reset();
+            router.push({name: 'login'});
+				}
     },
     props: {
-        message: String
+        personnage: {}
     }
 })
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-div {
-    border: 1px solid #44d9e8;
-    border-right: none;
+
+nav {
+    width: 150px !important;
 }
 
-#sidemenu {
-    width: 12%;
+::v-deep(#navbar_image) {
+    object-fit: cover;
+    width: 150px;
 }
 
 a.nav-link.active {
