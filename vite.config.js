@@ -17,9 +17,10 @@ export default defineConfig({
     mode: 'development',
     publicDir: 'src/assets',
     resolve: {
-        extensions: ['.vue', '.js', '.scss']
+        extensions: ['.vue', '.js', '.scss', '.ts']
     },
     server: {
+        host: true,
         port: 3000
     },
 });

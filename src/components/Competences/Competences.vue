@@ -1,7 +1,7 @@
 <template>
 
 
-  <div class="d-flex flex-wrap">
+  <div class="d-flex flex-wrap ms-3">
 
     <div class="col-1">
       <div class="d-flex flex-column justify-content-evenly vh-100  position-fixed">

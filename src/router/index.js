@@ -39,6 +39,10 @@ const routes = [
         ],
     },
     {
+        path: '/evangelion',
+        name: 'evangelion'
+    },
+    {
         path: '/overview',
         name: 'Overview',
         component: Overview, // without webpack code splitting

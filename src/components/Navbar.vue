@@ -51,7 +51,7 @@ export default defineComponent({
             pages: [
                 {
                     nom: 'Aperçu',
-                    route: '/overview',
+                    route: '/personnage/overview',
                     enabled: true
                 },
                 {
@@ -60,9 +60,16 @@ export default defineComponent({
                     enabled: true
                 },
                 {
+                    nom: 'Evangelion',
+                    route: {
+                        name: 'evangelion'
+										},
+                    enabled: true
+                },
+                {
                     nom: 'Psychologie',
                     route: '/psychologie',
-                    enabled: false
+                    enabled: true
                 }
             ]
         }

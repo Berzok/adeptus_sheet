@@ -48,7 +48,11 @@
 										:atouts="this.atouts"
 						></Atouts>
           </TabPanel>
-          <TabPanel header="Aspects"></TabPanel>
+          <TabPanel header="Aspects">
+						<Aspects :personnage="this.personnage"
+										 :aspects="this.personnage.aspects">
+						</Aspects>
+					</TabPanel>
         </TabView>
 
         <!--        <Tableau :config="tableau.config" :data="tableau.data"></Tableau>-->
@@ -74,22 +78,24 @@ import InputText from 'primevue/inputtext';
 import InputNumber from 'primevue/inputnumber';
 import Handicaps from "./Handicaps";
 import Atouts from "./Atouts";
+import Aspects from "./Aspect";
 
 export default defineComponent({
     name: "Overview",
     components: {
+				Aspects,
         Atouts,
         Handicaps,
         CardNumber,
         PersonnageDetails,
         Tableau,
-        TabView,
-        TabPanel,
-        DataTable,
         Column,
-        ToggleButton,
+        DataTable,
+        InputNumber,
         InputText,
-        InputNumber
+        TabPanel,
+        TabView,
+        ToggleButton
     },
     data() {
         return {

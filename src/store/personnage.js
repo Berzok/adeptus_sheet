@@ -8,7 +8,7 @@ const useStore = defineStore('main', {
         /** @type {'all' | 'finished' | 'unfinished'} */
         filter: 'all',
         // type will be automatically inferred to number
-        token: null,
+        token: '',
         logged: false
     }),
     getters: {

@@ -1,7 +1,7 @@
 import Axios from 'axios';
 import {useToast} from 'vue-toastification';
 import router from './../router/index';
-import {loadStore} from '../store/modules/loading';
+import {loadStore} from './../store/modules/loading';
 import {ActionTypes as loadingActionTypes} from './../store/modules/loading/actions';
 
 function configure(configuration) {
