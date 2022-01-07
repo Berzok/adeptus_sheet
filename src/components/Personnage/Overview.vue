@@ -54,8 +54,6 @@
 						</Aspects>
 					</TabPanel>
         </TabView>
-
-        <!--        <Tableau :config="tableau.config" :data="tableau.data"></Tableau>-->
       </div>
 
     </div>

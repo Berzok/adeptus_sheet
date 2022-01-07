@@ -89,7 +89,6 @@ export default defineComponent({
     mounted() {
         axios.get('/personnages/list').then((response, error) => {
             this.personnages = response.data;
-            console.dir(this.personnages);
         });
     },
     methods: {

@@ -1,6 +1,5 @@
 <template>
 
-
   <div class="d-flex flex-wrap ms-3">
 
     <div class="col-1">
@@ -20,7 +19,7 @@
           <DataTable :value="c.specialisations" @cell-edit-complete="" showGridlines tableStyle="width:500px; border: 1px solid grey">
             <Column field="specialisation" header="Nom">
 							<template #body="slotProps">
-								<p :class="slotProps.data.specialisation.restreinte ?? 'text-danger'">{{ slotProps.data.specialisation.nom }}</p>
+								<p :class="slotProps.data.specialisation.restreinte ? 'text-danger' : ''">{{ slotProps.data.specialisation.nom }}</p>
 							</template>
 						</Column>
             <Column field="acquis" header="Acquis" class="col-acquis">
